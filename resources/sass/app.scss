@@ -13,4 +13,14 @@ $background-secondary: #ecf0f1;
 $text-primary: #000;
 $text-secondary: #fff;
 
+body {
+
+  nav {
+    ul {
+      width: 100%;
+      justify-content: center !important;
+    }
+  }
+}
+
 @import 'login';

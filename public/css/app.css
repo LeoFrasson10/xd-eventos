@@ -8,9 +8,18 @@
   font-family: "Roboto", sans-serif;
 }
 
+body nav ul {
+  width: 100%;
+  justify-content: center !important;
+}
+
 main .content-flex {
   height: 100vh;
   align-items: center;
+}
+main .flex-register {
+  height: 100vh;
+  align-items: initial;
 }
 main .container-home {
   background-color: #2980b9;
@@ -23,6 +32,9 @@ main .container-home {
 }
 main .container-home h2, main .container-home h6 {
   font-weight: 600;
+}
+main .container-register {
+  height: auto;
 }
 main .container-form {
   height: 100%;
@@ -45,7 +57,13 @@ main .container-form .content-form form .container-buttons {
   display: flex;
   justify-content: flex-end;
 }
-main .container-form .content-form form .container-buttons button {
+main .form-register {
+  height: auto;
+}
+main .form-register .content-form form {
   width: 100%;
+}
+main .form-register .content-form form select {
+  margin-bottom: 10px;
 }
 

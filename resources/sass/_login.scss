@@ -4,6 +4,10 @@ main {
     height: 100vh;
     align-items: center;
   }
+  .flex-register {
+    height: 100vh;
+    align-items: initial;
+  }
 
   .container-home {
     background-color: $background-primary;
@@ -17,8 +21,9 @@ main {
     h2, h6 {
       font-weight: 600;
     }
-
-
+  }
+  .container-register{
+    height: auto;
   }
 
   .container-form{
@@ -43,12 +48,22 @@ main {
           display: flex;
           justify-content: flex-end;
 
-          button {
-            width: 100%;
-          }
         }
       }
 
+    }
+  }
+  .form-register{
+    height: auto;
+    .content-form {
+
+      form{
+        width: 100%;
+
+        select {
+          margin-bottom: 10px;
+        }
+      }
     }
   }
 }

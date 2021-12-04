@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title', 'Login')
+@section('title', 'Entrar')
 
 @section('content')
 <main>
@@ -25,7 +25,26 @@
       </div>
       <div class="col-8 container-form">
         <div class="content-form">
-          <form action="#" method="POST">
+          @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
+          @if(session('danger'))
+            <div class="alert alert-danger">
+              {{ session('danger') }}
+            </div>
+
+          @elseif(session('success'))
+            <div class="alert alert-success">
+              {{ session('success') }}
+            </div>
+          @endif
+          <form action="{{ route('auth.user') }}" method="POST">
             @csrf
             <div class="row">
               <div class="col-12 form-group">
@@ -39,10 +58,10 @@
             </div>
             <div class="row container-buttons">
               <div class="col-3">
-                <a href="#" class="btn btn-secondary">Cadastrar</a>
+                <a href="{{ route('site.register') }}" class="btn btn-secondary w-100">Cadastrar</a>
               </div>
               <div class="col-3">
-                <button type="submit" class="btn btn-primary">Entrar</button>
+                <button type="submit" class="btn btn-primary w-100">Entrar</button>
               </div>
             </div>
           </form>
