@@ -13,6 +13,8 @@
           <a class="nav-link {{ request()->is('usuarios') ? 'active' : '' }}" href="{{ route('site.auth.users.index') }}">Usuários</a>
         </li>
       </ul>
+      <a href="{{ route('site.logout') }}" class="btn btn-light">Sair</a>
+
     </div>
   </div>
 </nav>

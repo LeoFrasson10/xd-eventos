@@ -4,18 +4,41 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use App\Models\User;
 
 class UserController extends Controller
 {
   public function login()
   {
-    return view('site.login');
+    if(Auth::check()) {
+      return redirect()->route('site.auth.clients.index');
+    } else {
+      return view('site.login');
+    }
   }
 
   public function register()
   {
-    return view('site.register');
+    $states = Http::get('https://servicodados.ibge.gov.br/api/v1/localidades/estados');
+    $states = $states->json();
+    $ufs = array();
+    foreach ($states as $key => $value) {
+      array_push($ufs,  (object)[
+        'id' => $value['id'],
+        'sigla' => $value['sigla'],
+        'nome' => $value['nome']
+      ]);
+    }
+    // ordenar array
+    usort($ufs, function($a, $b) {
+      return strcmp($a->nome, $b->nome);
+    });
+    if(Auth::check()) {
+      return redirect()->route('site.auth.clients.index');
+    } else {
+      return view('site.register', compact('ufs'));
+    }
   }
 
   public function index()
@@ -73,25 +96,5 @@ class UserController extends Controller
 
   }
 
-  public function auth(Request $request)
-  {
-    $this->validate($request, [
-      'email' => 'required|email',
-      'password' => 'required',
-    ],[
-      'email.required' => 'Email é obrigatório',
-      'email.email' => 'Email inválido',
-      'password.required' => 'Senha é obrigatória',
-    ]);
 
-    $credentials = $request->only('email', 'password');
-
-    if (Auth::attempt($credentials)) {
-
-      return redirect()->route('site.auth.clients.index');
-    } else {
-      return redirect()->back()->with('danger', 'Usuário ou senha inválidos');
-    }
-
-  }
 }

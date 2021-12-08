@@ -67,3 +67,34 @@ main .form-register .content-form form select {
   margin-bottom: 10px;
 }
 
+main .container-actions {
+  padding: 16px 8px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main .container-actions form {
+  width: 100%;
+}
+main .container-actions form input:not([type=checkbox]) {
+  width: 100%;
+}
+main .container-actions form select {
+  width: 100%;
+}
+main .container-origin {
+  display: flex;
+  align-items: center;
+}
+main .container-table {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+}
+main .container-table table th {
+  text-align: center;
+}
+main .container-table table td {
+  text-align: center;
+}
+

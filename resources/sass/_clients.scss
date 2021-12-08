@@ -1,0 +1,41 @@
+main {
+
+  .container-actions{
+    padding: 16px 8px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    form {
+      width: 100%;
+      input:not([type="checkbox"]) {
+        width: 100%;
+      }
+      select {
+        width: 100%;
+      }
+    }
+
+
+  }
+  .container-origin{
+    display: flex;
+    align-items: center;
+
+  }
+  .container-table{
+    width: 100%;
+    margin-top: 12px;
+    // margin-bottom: 20px;
+    padding: 8px;
+
+    table {
+      th {
+        text-align: center;
+      }
+      td {
+        text-align: center;
+      }
+    }
+  }
+}
