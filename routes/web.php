@@ -31,6 +31,12 @@ Route::get('/sair', [AuthController::class, 'logout'])->name('site.logout');
 // routes with middleware
 Route::group(['middleware' => 'auth'], function () {
   Route::get('/usuarios', [UserController::class, 'index'])->name('site.auth.users.index');
+  Route::get('/usuarios/cadastrar', [UserController::class, 'create'])->name('site.auth.users.form');
+  Route::post('/usuarios/cadastrar', [UserController::class, 'store'])->name('site.auth.users.store');
+  Route::get('/usuarios/{id}/editar', [UserController::class, 'edit'])->name('site.auth.users.edit');
+  Route::put('/usuarios/{id}/editar', [UserController::class, 'update'])->name('site.auth.users.update');
+  Route::delete('/usuarios/{id}/excluir', [UserController::class, 'destroy'])->name('site.auth.users.destroy');
+
   Route::get('/clientes', [ClientsController::class, 'index'])->name('site.auth.clients.index');
   Route::get('/clientes/cadastrar', [ClientsController::class, 'create'])->name('site.auth.clients.form');
   Route::post('/clientes/cadastrar', [ClientsController::class, 'store'])->name('site.auth.clients.store');

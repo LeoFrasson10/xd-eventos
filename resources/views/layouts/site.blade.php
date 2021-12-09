@@ -16,8 +16,15 @@
   <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
   <script>
 
+    function handleDelete(e, route) {
+      let link = $(e).parent().parent().parent().find('form').attr('action');
+      $('#link-remove').attr('action', route);
+    }
+
     function handleChangeState(el){
       var uf = el.value;
+
+      var city = document.getElementById('city');
       var url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/"+uf+"/municipios";
       fetch(url)
       .then(response => response.json())
@@ -37,6 +44,14 @@
         city.innerHTML = option;
       })
     }
+    $(document).ready(function(){
+      $('#phone').inputmask({
+        mask: ['(99) 9999-9999', '(99) 99999-9999'],
+        showMaskOnHover: false,
+        showMaskOnFocus: false,
+        // removeMaskOnSubmit: true,
+      });
+    });
   </script>
   @yield('js')
 </html>

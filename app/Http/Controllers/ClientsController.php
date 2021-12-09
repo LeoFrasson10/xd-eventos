@@ -16,12 +16,6 @@ class ClientsController extends Controller
     $state = $request->state ? $request->state : 'null';
     $city = $request->city ? $request->city : 'null';
     $status = $request->status ? $request->status : 'null';
-    $facebook = $request->facebook ? $request->facebook : 1;
-    $indication = $request->indication ? $request->indication : 1;
-    $website = $request->website ? $request->website : 1;
-    $others = $request->others ? $request->others : 1;
-
-    // dd($name, $state, $city, $status, $facebook, $indication, $website, $others);
 
     if($name != null && $state != "null" && $city != "null")
     {
@@ -41,8 +35,6 @@ class ClientsController extends Controller
       }
         // dd($clients);
     } else if ($name && $state != "null") {
-
-
       if($status != "null"){
         $clients = Client::where('name', 'like', '%'.$name.'%')
         ->where('state', 'like', '%'.$request->state.'%')
@@ -120,11 +112,11 @@ class ClientsController extends Controller
         'nome' => $value['nome']
       ]);
     }
-    // ordenar array
+
     usort($ufs, function($a, $b) {
       return strcmp($a->nome, $b->nome);
     });
-    return view('site.auth.clients.index', compact('clients','name','state','city', 'status', 'facebook', 'indication', 'website', 'others', 'ufs'));
+    return view('site.auth.clients.index', compact('clients','name','state','city', 'status', 'ufs'));
   }
 
   public function create()

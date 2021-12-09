@@ -140,12 +140,6 @@
 @section('js')
 <script>
   $(document).ready(function(){
-    $('#phone').inputmask({
-      mask: ['(99) 9999-9999', '(99) 99999-9999'],
-      showMaskOnHover: false,
-      showMaskOnFocus: false,
-      // removeMaskOnSubmit: true,
-    });
     $('#document').inputmask({
       mask: ['99.999.999/9999-99'],
       showMaskOnHover: false,
